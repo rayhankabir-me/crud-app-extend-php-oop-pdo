@@ -45,24 +45,87 @@ spl_autoload_register(function ($class_name) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <form action="" method="POST">
-                        <div class="mb-2">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name">
 
-                        </div>
-                        <div class="mb-2">
-                            <label for="department" class="form-label">Department</label>
-                            <input type="text" class="form-control" id="department">
 
-                        </div>
-                        <div class="mb-2">
-                            <label for="age" class="form-label">Age</label>
-                            <input type="text" class="form-control" id="age">
+                    <?php
 
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    if (isset($_POST['create'])) {
+
+                        $name = $_POST['name'];
+                        $department = $_POST['department'];
+                        $age = $_POST['age'];
+
+                        $user->setName($name);
+                        $user->setDepartment($department);
+                        $user->setAge($age);
+
+                        $user->createData();
+                        echo "<p class='text-success'>Data Created Successfully.......</p>";
+                    }
+
+
+                    ?>
+
+                    <!---data update-->
+
+                    <?php
+
+                    if (isset($_GET['action']) && $_GET['action'] == 'edit') {
+
+                        $id = $_GET['id'];
+                        $result = $user->readById($id);
+
+                    ?>
+                        <form action="" method="POST">
+                            <div class="mb-2">
+                                <label for="name" class="form-label">Name</label>
+                                <input name="name" type="text" class="form-control" id="name" value="<?php echo $result['name']; ?>">
+
+                            </div>
+                            <div class="mb-2">
+                                <label for="department" class="form-label">Department</label>
+                                <input name="department" type="text" class="form-control" id="department" value="<?php echo $result['department']; ?>">
+
+                            </div>
+                            <div class="mb-2">
+                                <label for="age" class="form-label">Age</label>
+                                <input name="age" type="text" class="form-control" id="age" value="<?php echo $result['age']; ?>">
+
+                            </div>
+                            <input type="submit" name="update" class="btn btn-primary" value="Update Data">
+                        </form>
+
+
+                    <?php
+                    } else {
+
+                    ?>
+
+                        <form action="" method="POST">
+                            <div class="mb-2">
+                                <label for="name" class="form-label">Name</label>
+                                <input name="name" type="text" class="form-control" id="name" placeholder="Name">
+
+                            </div>
+                            <div class="mb-2">
+                                <label for="department" class="form-label">Department</label>
+                                <input name="department" type="text" class="form-control" id="department" placeholder="Department">
+
+                            </div>
+                            <div class="mb-2">
+                                <label for="age" class="form-label">Age</label>
+                                <input name="age" type="text" class="form-control" id="age" placeholder="Age">
+
+                            </div>
+                            <input type="submit" name="create" class="btn btn-primary" value="Create Data">
+                        </form>
+
+                    <?php
+
+                    }
+                    ?>
+
+
                 </div>
                 <div class="col-lg-8">
 
@@ -92,7 +155,7 @@ spl_autoload_register(function ($class_name) {
                                     <td><?php echo $value['name']; ?></td>
                                     <td><?php echo $value['department']; ?></td>
                                     <td><?php echo $value['age']; ?></td>
-                                    <td><a class="btn btn-warning me-2" href="">Edit</a><a class="btn btn-danger" href="">Delete</a></td>
+                                    <td><a class="btn btn-warning me-2" href="index.php?action=edit&id=<?php echo $value['id']; ?>">Edit</a><a class="btn btn-danger" href="">Delete</a></td>
                                 </tr>
 
 
