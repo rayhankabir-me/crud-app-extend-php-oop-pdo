@@ -1,3 +1,13 @@
+<?php
+
+spl_autoload_register(function ($class_name) {
+
+    include "classes/" . $class_name . ".php";
+});
+
+?>
+<?php $user = new Student(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,13 +77,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Rayhan</td>
-                                <td>CSE</td>
-                                <td>@4</td>
-                                <td><a class="btn btn-warning me-2" href="">Edit</a><a class="btn btn-danger" href="">Delete</a></td>
-                            </tr>
+
+                            <?php
+
+
+                            $i = 0;
+
+                            foreach ($user->readAll() as $key => $value) {
+                                $i++;
+
+                            ?>
+                                <tr>
+                                    <th scope="row"><?php echo $i; ?></th>
+                                    <td><?php echo $value['name']; ?></td>
+                                    <td><?php echo $value['department']; ?></td>
+                                    <td><?php echo $value['age']; ?></td>
+                                    <td><a class="btn btn-warning me-2" href="">Edit</a><a class="btn btn-danger" href="">Delete</a></td>
+                                </tr>
+
+
+                            <?php
+                            }
+
+                            ?>
+
 
 
                         </tbody>
