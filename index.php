@@ -12,7 +12,76 @@
 
 <body>
 
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading-content">
+                        <div class="heading-text">
+                            <h1>CRUD App Extend With PHP OOP & PDO</h1>
+                        </div>
 
+                        <div class="heading-button">
+                            <a class="btn btn-primary" href="index.php">Create Data</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="main-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <form action="" method="POST">
+                        <div class="mb-2">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name">
+
+                        </div>
+                        <div class="mb-2">
+                            <label for="department" class="form-label">Department</label>
+                            <input type="text" class="form-control" id="department">
+
+                        </div>
+                        <div class="mb-2">
+                            <label for="age" class="form-label">Age</label>
+                            <input type="text" class="form-control" id="age">
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="col-lg-8">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Serial</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Rayhan</td>
+                                <td>CSE</td>
+                                <td>@4</td>
+                                <td><a class="btn btn-warning me-2" href="">Edit</a><a class="btn btn-danger" href="">Delete</a></td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
